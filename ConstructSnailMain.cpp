@@ -68,6 +68,10 @@ int main()
 {
     int **m;
     m = constructSnailMatrix(3, 4);
+    if(m == nullptr){
+        cout << "empty matrix" << endl;
+        return 0;
+    }
     for(int i =0; i<3; i++){
         for(int j=0; j<4; j++){
             cout << m[i][j] << "\t";
