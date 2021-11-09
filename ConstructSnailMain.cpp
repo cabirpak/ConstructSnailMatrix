@@ -13,16 +13,23 @@ int** constructSnailMatrix(int M, int N){
     int counter = 0;
     int x=0, y=0;
     
+    //move limits
     int x_limit_start = 0;
-    int x_limit_end = 4;
+    int x_limit_end = N;
     int y_limit_start = 0;
-    int y_limit_end = 3;
+    int y_limit_end = M;
     
     cout << "started" << endl;
     
-    int loopCount = 0;
-    while(counter < 4*3){
+    //int loopCount = 0;
+    
+    // iterate through different directions and fill the elements
+    while(counter < M*N){
         cout << "direction: " << direction << endl;
+        
+        //after doing actions for each direction, the limits and current 
+        //  positions are updated
+        
         if(direction == 0){
             for(x=x_limit_start; x<x_limit_end; x++){
                 m[y][x] = ++counter;
@@ -54,8 +61,9 @@ int** constructSnailMatrix(int M, int N){
         }
         direction = (direction + 1) % 4;
         
-        /*for(int i =0; i<3; i++){
-            for(int j=0; j<4; j++){
+        //for debugging aim
+        /*for(int i =0; i<M; i++){
+            for(int j=0; j<N; j++){
                 cout << m[i][j] << "\t";
             }
             cout << endl;
@@ -66,13 +74,15 @@ int** constructSnailMatrix(int M, int N){
 
 int main()
 {
+    //the test main
+    
     int **m;
-    m = constructSnailMatrix(3, 4);
+    m = constructSnailMatrix(5, 4);
     if(m == nullptr){
         cout << "empty matrix" << endl;
         return 0;
     }
-    for(int i =0; i<3; i++){
+    for(int i =0; i<5; i++){
         for(int j=0; j<4; j++){
             cout << m[i][j] << "\t";
         }
